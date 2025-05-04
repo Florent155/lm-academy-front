@@ -1,9 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [],
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}", // ✅ Added "vue" here!
+  ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        textPrimary: "#333333"
+      },
+      fontFamily: {
+        gelasio: ["Gelasio", "serif"],
+      }
+    },
   },
   plugins: [],
-}
+};
+
+
+
 
