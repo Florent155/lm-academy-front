@@ -5,7 +5,7 @@
             <nav class="text-3xl flex gap-2">
                 <router-link :to="{ name: 'home' }" active-class="border-b-textPrimary border-b-2">Home</router-link>
                 <span>|</span>
-                <router-link :to="'/about us'" active-class="border-b-textPrimary border-b-2">About us</router-link>
+                <router-link :to="{ name: 'AboutUs' }" active-class="border-b-textPrimary border-b-2">About us</router-link>
                 <span>|</span>
                 <router-link :to="'/login'" active-class="border-b-textPrimary border-b-2">Login</router-link>
                 

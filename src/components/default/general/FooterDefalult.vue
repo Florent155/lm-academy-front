@@ -1,4 +1,11 @@
-<template>
+ <script setup>
+import { computed } from 'vue';
+const currentYear = computed(() => new Date().getFullYear())
+
+
+</script>
+
+ <template>
     <footer>
     <div class="footer flex justify-between items-center border-t-textPrimary border-t-4 py-4">
         <nav class="flex gap-2 text-xl">
@@ -9,9 +16,11 @@
             <router-link :to="{name: 'ContactPage'}" active-class="border-b-textPrimary border-b-2">Contact</router-link>
 
         </nav>
-        <p class=" text-xl">Copyright &copy;</p>
+        <p class=" text-xl">Copyright &copy; {{ currentYear }}</p>
             
     
     </div>
 </footer>
 </template>
+
+<style scoped></style>
