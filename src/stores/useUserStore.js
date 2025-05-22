@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import Axios from '@/utils/axios'
 import { useRouter } from 'vue-router'
 
+
 export const useUserStore = defineStore ('user', () => {    
     const user = ref({})
     const isUserLoggedIn = ref(false) 

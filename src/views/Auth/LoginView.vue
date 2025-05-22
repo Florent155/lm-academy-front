@@ -1,8 +1,9 @@
 <script setup>
-import { useUserStore } from '../../stores/useUserStore';
-import Axios from '../../utils/axios';
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { useUserStore } from '../../stores/useUserStore'
+import Axios from '../../utils/axios'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { toast } from 'vue3-toastify'
 
 
 const  email = ref('')
@@ -31,14 +32,15 @@ const handleSubmit = async () => {
     useStore.setUser(auth_user)
     router.push('/dashboard')
 
-    const getRoles = await Axios.post('/auth/user-proile' , data )
+    const getRoles = await Axios.get('/auth/user-proile' , data )
     
     
   }
   
-  console.log("response" , response)
+  console.log('response' , response)
   } catch (error) {
-    console.error("error" , error);
+    toast.error(error.response?.data?.message)
+    console.error('error' , error.response?.data?.message);
   } 
 }
 

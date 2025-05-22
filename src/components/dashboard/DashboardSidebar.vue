@@ -1,5 +1,5 @@
 <script setup>
-import { useUserStore } from '../../stores/useUserStore'; 
+import { useUserStore } from '../../stores/useUserStore'
 const userStore = useUserStore()
 const handleLogout = () => {
   userStore.logout()
@@ -32,14 +32,17 @@ const handleLogout = () => {
             <span class="text-xs text-gray-400 font-semibold">HOME</span>
           </li>
 
-          <li class="sidebar-item">
-            <a
-              class="sidebar-link gap-3 py-2.5 my-1 text-base flex items-center relative rounded-md text-gray-500 w-full"
-              href="../index.html"
+          <li class="sidebar-item flex justify-center items-center gap-2">
+
+             <!--  active-class="border-b-textPrimary border-b-2  -->  
+            >
+            <router-link 
+            class="sidebar-link gap-3 py-2.5 my-1 text-base flex items-center relative rounded-md text-gray-500 w-full"
+            :to="{name: 'Dashboard'}"
             >
               <i class="ti ti-layout-dashboard ps-2 text-2xl"></i>
-              <span>Dashboard</span>
-            </a>
+             ><span>Dashboard</span>
+            </router-link>
           </li>
 
           <li class="text-xs font-bold mb-4 mt-6">
@@ -47,14 +50,25 @@ const handleLogout = () => {
             <span class="text-xs text-gray-400 font-semibold">UI COMPONENTS</span>
           </li>
 
-          <li class="sidebar-item">
-            <a
-              class="sidebar-link gap-3 py-2.5 my-1 text-base flex items-center relative rounded-md text-gray-500 w-full"
-              href="../components/buttons.html"
+          
+         <li v-if="userStore.user.roles[0]?.name == 'Admin'" class="sidebar-item">
+            <router-link 
+            class="sidebar-link gap-3 py-2.5 my-1 text-base flex items-center relative rounded-md text-gray-500 w-full"
+            :to="{name: 'CourseAdmin'}"
+             >
+             <i class = "ti ti-article ps-2 text-2xl"></i>
+             ><span>Courses</span>
+            </router-link>
+          </li>
+
+          <li v-if="userStore.user.roles[0]?.name == 'User'" class="sidebar-item">
+            <router-link 
+            class="sidebar-link gap-3 py-2.5 my-1 text-base flex items-center relative rounded-md text-gray-500 w-full"
+            :to="{name: 'CourseUser'}"
             >
-              <i class="ti ti-article ps-2 text-2xl"></i>
-              <span>Buttons</span>
-            </a>
+             <i class = "ti ti-article ps-2 text-2xl"></i>
+             ><span>Courses</span>
+            </router-link>
           </li>
 
           <li class="sidebar-item">
@@ -102,7 +116,7 @@ const handleLogout = () => {
             <span class="text-xs text-gray-400 font-semibold">AUTH</span>
           </li>
 
-          <li class="sidebar-item">
+          <li class="sidebar-item cursor-pointer">
             <a
               class="sidebar-link gap-3 py-2.5 my-1 text-base flex items-center relative rounded-md text-gray-500 w-full"
               @click="handleLogout()"
@@ -112,15 +126,17 @@ const handleLogout = () => {
             </a>
           </li>
 
-          <li class="sidebar-item">
-            <a
-              class="sidebar-link gap-3 py-2.5 my-1 text-base flex items-center relative rounded-md text-gray-500 w-full"
-              href="../pages/authentication-register.html"
+
+         <li v-if="userStore.user.roles[0]?.name == 'Admin'"class="sidebar-item flex justify-center items-center gap-2">
+             <!--  active-class="border-b-textPrimary border-b-2  -->  
+            >
+            <router-link 
+            class="sidebar-link gap-3 py-2.5 my-1 text-base flex items-center relative rounded-md text-gray-500 w-full"
+            :to="{name: 'SendRegistrationInvite'}"
             >
               <i class="ti ti-user-plus ps-2 text-2xl"></i>
-              <span>Register</span>
-            </a>
-          </li>
+             ><span>Invite</span></router-link>
+         </li>
 
           <li class="text-xs font-bold mb-4 mt-8">
             <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center"></i>
